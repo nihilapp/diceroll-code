@@ -1,0 +1,44 @@
+{
+  "name": "the-dice-roll",
+  "version": "3.7.0",
+  "description": "roll dice app",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheDiceRoll/TheDiceRoll.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheDiceRoll/TheDiceRoll/issues"
+  },
+  "homepage": "https://github.com/TheDiceRoll/TheDiceRoll#readme",
+  "scripts": {
+    "serve": "rm -rf node_modules/.cache && rm -rf build/ && next dev",
+    "start": "rm -rf node_modules/.cache && rm -rf build/ && next build && next start",
+    "build": "rm -rf node_modules/.cache && rm -rf build/ && next build",
+    "export": "rm -rf node_modules/.cache && rm -rf build/ && next build && next export -o TheDiceRoll.github.io/ && touch TheDiceRoll.github.io/.nojekyll && cd ../TheDiceRoll.github.io && mv .git ../backup && cd ../ && rm -rf TheDiceRoll.github.io && cd TheDiceRoll && mv TheDiceRoll.github.io ../ && cd ../backup && mv .git ../TheDiceRoll.github.io && cd ../TheDiceRoll.github.io && git add .",
+    "clean": "npm cache clean --force"
+  },
+  "keywords": [],
+  "author": "NIHILncunia",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "immer": "^9.0.3",
+    "next": "^10.2.3",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "eslint": "^7.28.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
+}
