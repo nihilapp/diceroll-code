@@ -62,22 +62,12 @@ const TopDiceInput = () => {
     }
   `;
   
-  const onSubmitRollDice = useCallback((e) => {
-    e.preventDefault();
-    
-    dispatch({
-      type: ROLL_DICE,
-      value: values,
-    });
-    
-    inputRef.current.focus();
-  }, [ values, ]);
-  
   const onclickRollDices = useCallback(() => {
     dispatch({
       type: ROLL_DICE,
       value: inputRef.current.value,
     });
+    inputRef.current.focus();
   }, []);
   
   const onclickRollRest = useCallback(() => {
@@ -97,9 +87,18 @@ const TopDiceInput = () => {
     e.target.value = e.target.value.replace(/[^ㅇd0-9-+ ]/gi, '');
   }, []);
   
+  const onKeyUpRollDices = useCallback((e) => {
+    if (e.keyCode === 13) {
+      dispatch({
+        type: ROLL_DICE,
+        value: inputRef.current.value,
+      });
+    }
+  }, []);
+  
   return (
     <>
-      <form css={style} onSubmit={onSubmitRollDice}>
+      <div css={style}>
         <input
           id={'roll-input'}
           type='text'
@@ -107,10 +106,12 @@ const TopDiceInput = () => {
           value={values} ref={inputRef}
           onChange={onChangeInputDice}
           onInput={onInputDice}
+          onKeyUp={onKeyUpRollDices}
+          autoComplete={'off'}
           required
         />
-        <Roll onclickRollDices={onclickRollDices} onclickRollRest={onclickRollRest} submit={'true'} />
-      </form>
+        <Roll onclickRollDices={onclickRollDices} onclickRollRest={onclickRollRest} />
+      </div>
     </>
   );
 };

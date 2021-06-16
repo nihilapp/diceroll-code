@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 import fontSize from '@/data/fontSize';
 
-const Roll = ({ onclickRollDices, onclickRollRest, submit, }) => {
+const Roll = ({ onclickRollDices, onclickRollRest, }) => {
   const style = css`
     display: flex;
     flex-direction: row;
@@ -95,11 +95,6 @@ const Roll = ({ onclickRollDices, onclickRollRest, submit, }) => {
     }
   `;
   
-  const buttonType = {
-    'false': <button id={'roll-dice'} onClick={onclickRollDices}>굴리기</button>,
-    'true': <button id={'roll-dice'} type={'submit'}>굴리기</button>,
-  };
-  
   return (
     <>
       <div css={style}>
@@ -108,7 +103,7 @@ const Roll = ({ onclickRollDices, onclickRollRest, submit, }) => {
           <option value='maximum'>최대값</option>
           <option value='minimum'>최소값</option>
         </select>
-        {buttonType[submit]}
+        <button id={'roll-dice'} onClick={onclickRollDices}>굴리기</button>
         <button id={'roll-reset'} onClick={onclickRollRest}>초기화</button>
       </div>
     </>

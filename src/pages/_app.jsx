@@ -53,6 +53,8 @@ const App = ({ Component, pageProps, }) => {
         <meta name='Yeti' content='All'/>
         <meta name='Yeti' content='index, follow'/>
   
+        <meta name='google-site-verification' content='iIK1QMzAYU9YHlIbkvglYdu5GF4WsxIBaV_geNrPVMI' />
+  
         <link rel='shortcut icon' href={'/assets/icons/icon.ico'} type='image/x-icon'/>
         <title>{pageName[router.pathname]} - DiceRoll v{siteData.version}</title>
       </Head>

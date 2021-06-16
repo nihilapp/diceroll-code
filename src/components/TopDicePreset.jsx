@@ -86,7 +86,7 @@ const TopDicePreset = () => {
             <option key={suffix} value={suffix}>{suffix}</option>
           ))}
         </select>
-        <Roll onclickRollDices={onclickRollDices} onclickRollRest={onclickRollRest} submit={'false'} />
+        <Roll onclickRollDices={onclickRollDices} onclickRollRest={onclickRollRest} />
       </div>
     </>
   );
