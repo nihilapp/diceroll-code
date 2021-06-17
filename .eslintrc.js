@@ -23,6 +23,7 @@ module.exports = {
   },
   plugins: [
     'import',
+    'react',
     'react-hooks',
   ],
   rules: {
