@@ -9,33 +9,26 @@ const Roll = ({ onclickRollDices, onclickRollRest, }) => {
 
     & > #roll-type {
       text-align-last: center;
-      outline: none;
-      transition: all 0.3s;
-      padding: 5px 10px;
-      background-color: #333333;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
     }
 
-    & > #roll-dice {
-      outline: none;
-      transition: all 0.3s;
-      background-color: #333333;
-      color: #ffffff;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
-
+    & > #roll-type,
+    & > #roll-dice,
     & > #roll-reset {
       outline: none;
       transition: all 0.3s;
+      padding: 5px 10px;
       background-color: #333333;
       color: #ffffff;
       border: none;
-      padding: 5px 10px;
       cursor: pointer;
+    }
+
+    & > #roll-dice,
+    & > #roll-reset {
+      &:hover {
+        background-color: #ff4242;
+        color: #ffffff;
+      }
     }
 
     @media (min-width: 1px) and (max-width: 600px) {

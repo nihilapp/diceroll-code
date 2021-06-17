@@ -14,11 +14,11 @@ const DiceResult = () => {
       padding: 10px;
       border-radius: 0 10px 10px 0;
       transition: all 0.3s;
-      border-left: 20px solid #aaaaaa;
+      border-left: 30px solid #aaaaaa;
       box-shadow: 0 0 5px -2px #000000;
       
       &:nth-of-type(1) {
-        border-left: 20px solid #333333;
+        border-left: 30px solid #ff4242;
       }
       
       & > .message-box {

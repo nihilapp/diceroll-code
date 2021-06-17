@@ -6,6 +6,7 @@ import fontSize from '@/data/fontSize';
 const FooterContainer = () => {
   const style = css`
     margin-top: 20px;
+    user-select: none;
     
     & > p {
       padding: 10px;
