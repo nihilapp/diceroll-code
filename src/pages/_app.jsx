@@ -19,8 +19,8 @@ const App = ({ Component, pageProps, }) => {
         <meta httpEquiv='X-UA-Compatible' content='ie=edge' />
         <meta name={'viewport'} content={'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0'} />
   
-        <meta property='og:site_name' content={`DiceRoll v${siteData.version}`} />
-        <meta property='og:title' content={`${pageName[router.pathname]} - DiceRoll v${siteData.version}`} />
+        <meta property='og:site_name' content={`DiceRoll`} />
+        <meta property='og:title' content={`${pageName[router.pathname]} - DiceRoll`} />
         <meta property='og:type' content='website' />
         <meta property='og:description' content='주사위가 필요할 때에 누구나 간편하게 주사위를 굴릴 수 있게끔 해주는 웹 프로그램.' />
         <meta property='og:image' content='https://thediceroll.github.io/assets/images/Dice.png' />
@@ -30,7 +30,7 @@ const App = ({ Component, pageProps, }) => {
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='DiceRoll' />
         <meta name='twitter:creator' content='@NIHILncunia' />
-        <meta name='twitter:title' content={`${pageName[router.pathname]} - DiceRoll v${siteData.version}`} />
+        <meta name='twitter:title' content={`${pageName[router.pathname]} - DiceRoll`} />
         <meta name='twitter:description' content='주사위가 필요할 때에 누구나 간편하게 주사위를 굴릴 수 있게끔 해주는 웹 프로그램.' />
         <meta name='twitter:image' content='https://thediceroll.github.io/assets/images/Dice.png' />
   
@@ -56,7 +56,7 @@ const App = ({ Component, pageProps, }) => {
         <meta name='google-site-verification' content='iIK1QMzAYU9YHlIbkvglYdu5GF4WsxIBaV_geNrPVMI' />
   
         <link rel='shortcut icon' href={'/assets/icons/icon.ico'} type='image/x-icon'/>
-        <title>{pageName[router.pathname]} - DiceRoll v{siteData.version}</title>
+        <title>{pageName[router.pathname]} - DiceRoll</title>
       </Head>
       <Component {...pageProps} />
     </>

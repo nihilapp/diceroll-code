@@ -4,7 +4,13 @@ import fontSize from '@/data/fontSize';
 
 const RollDetails = ({ total, value, detailItemArray, modSpanArray, }) => {
   const style = css`
-    margin: 40px 0;
+    margin: 20px 0;
+    background-color: #eeeeee;
+    padding: 10px;
+    border: 2px solid #33333330;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
     
     &:nth-of-type(1) {
       margin-top: 0;
@@ -16,13 +22,17 @@ const RollDetails = ({ total, value, detailItemArray, modSpanArray, }) => {
 
     & > .roll-total {
       font-weight: 900;
-      color: #ffffff;
-      border-radius: 10px;
-      padding: 0 10px;
-      background-color: #333333;
-      display: inline-block;
-      margin-bottom: 10px;
+      color: #333333;
       transition: all 0.3s;
+      margin-bottom: 20px;
+      
+      & > span {
+        color: #ffffff;
+        border-radius: 10px;
+        padding: 0 10px;
+        background-color: #333333;
+        display: inline-block;
+      }
     }
     
     & > .dice-label {
@@ -32,47 +42,46 @@ const RollDetails = ({ total, value, detailItemArray, modSpanArray, }) => {
       transition: all 0.3s;
       
       &:before {
-        content: "\\f6cf";
+        content: '\\f6cf';
         font-family: 'Font Awesome 5 Free', sans-serif;
         font-weight: 900;
-        margin-right: 5px;
+        margin-right: 10px;
       }
     }
     
     & > .detail-box {
-      & > .dice-details-box {
-        margin-bottom: 10px;
-      }
+      & > .dice-details-box {}
       
       & > .mod-details-box {
         padding: 5px;
         border-radius: 5px;
-        background-color: #dddddd;
-        border: 2px solid #33333330;
+        background-color: #ffffff;
+        border: 2px solid #33333350;
+        margin-top: 10px;
       }
     }
     
     @media (min-width: 1px) and (max-width: 600px) {
-      & > .roll-total {font-size: ${fontSize[6]};}
-      & > .dice-label {font-size: ${fontSize[3]};}
+      & > .roll-total,
+      & > .dice-label {font-size: ${fontSize[5]};}
     }
     
     @media (min-width: 601px) and (max-width: 900px) {
-      & > .roll-total {font-size: ${fontSize[7]};}
-      & > .dice-label {font-size: ${fontSize[4]};}
+      & > .roll-total,
+      & > .dice-label {font-size: ${fontSize[6]};}
     }
     
     @media (min-width: 901px) {
-      & > .roll-total {font-size: ${fontSize[7]};}
-      & > .dice-label {font-size: ${fontSize[4]};}
+      & > .roll-total,
+      & > .dice-label {font-size: ${fontSize[6]};}
     }
   `;
   
   return (
     <>
       <div className='roll-detail' css={style}>
-        <h3 className='roll-total'>{total}</h3>
         <p className='dice-label'>{value}</p>
+        <h3 className='roll-total'>총합: <span>{total}</span></h3>
         <div className='detail-box'>
           <div className='dice-details-box'>
             {detailItemArray.map(item => (

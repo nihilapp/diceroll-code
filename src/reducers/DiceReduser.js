@@ -1,9 +1,8 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
-import DiceItem from '@/components/Contents/DiceItem';
-import DiceDetails from '@/components/Contents/DiceDetails';
 import ModItem from '@/components/Contents/ModItem';
 import RollDetails from '@/components/Contents/RollDetails';
+import getRollDice from '@/utils/getRollDice';
 
 export const ROLL_DICE = 'ROLL_DICE';
 export const RESET_FORM = 'RESET_FORM';
@@ -72,19 +71,16 @@ const DiceReduser = (state, action) => {
         let newValue;
         let dice;
         let mod;
-        let dicebox = [];
-        let detailItemArray = [];
-        let diceItemBox = [];
-        let roll;
-        let color;
-        let diceItem;
         let rolldetail;
-        let dicetotal;
-        let detailItem;
+        let dicestotal;
         let modSpan;
         let modSpanArray = [];
         let modArray = [];
         let modTotal;
+        let rollDice = {};
+        let lastValue;
+        let dicebox = [];
+        let detailItemArray = [];
         
         const select = document.getElementById('roll-type');
         
@@ -92,11 +88,9 @@ const DiceReduser = (state, action) => {
         if (value[x].match(/[dㅇ]/gi) !== -1) {
           newValue = value[x].replace(/[dㅇ]/gi, 'D');
         }
-  
-        const diceprefix = /[D]/gi;
         
         // D가 없으면 실행하지 않는다.
-        if (value[x].match(diceprefix) === -1) {
+        if (newValue.indexOf('D') === -1) {
           return [
             ...state, {
               ErrorMessage: (<><span className={'red'}>에러 8</span>주사위식에 D가 필요합니다.</>),
@@ -107,10 +101,6 @@ const DiceReduser = (state, action) => {
         
         // +로 다시 값을 분리한다.
         const newValues = newValue.split('+');
-        
-        // 값을 찾기 위한 정규식을 마련한다.
-        const dicesString = /\w+(?=[D])/i;
-        const suffixString = /(?<=d)[0-9.]+/i;
         
         while (newValues.includes('')) {
           if (newValues.indexOf('') !== -1) {
@@ -162,68 +152,35 @@ const DiceReduser = (state, action) => {
           if (newValues[xx].includes('D')) {
             dice = newValues[xx];
             // 값에 D가 포함되어있으면 다이스로 분류.
-            const dicesArray = dice.match(dicesString);
-            let dices = dicesArray ? Number(dicesArray[0]) : 1;
             
-            const suffixArray = dice.match(suffixString);
-            let suffix = Number(suffixArray[0]);
-            
-            for (let r = 0; r < dices; r++) {
-              if (select.value === 'maximum') {
-                roll = suffix;
-              } else if (select.value === 'minimum') {
-                roll = 1;
-              } else if (select.value === 'normal') {
-                roll = Math.ceil(Math.random() * suffix);
-              }
-              
-              if (roll === suffix) {
-                color = 'critical';
-              } else if (roll === 1) {
-                color = 'fumble';
-              } else {
-                color = 'normal';
-              }
-  
-              diceItem = <DiceItem key={uuid()} roll={roll} color={color} />;
-  
-              diceItemBox.push(diceItem);
-              dicebox.push(roll);
-            }
-            
-            detailItem = <DiceDetails key={uuid()} dice={dice} diceItemBox={diceItemBox} />;
-            
-            detailItemArray.push(detailItem);
-            diceItemBox = [];
-          } else {
-            if (newValues[xx].includes('-')) {
-              // 값에 -가 있으면 패널티 추가값으로 분류.
-              mod = Number(newValues[xx]);
-    
-              modSpan = <ModItem key={uuid()} modType={'penaltyMod'} value={mod} />;
-    
-              modSpanArray.push(modSpan);
-              modArray.push(mod);
+            if (dice.includes('*')) {
+              lastValue = dice.split('*');
+              rollDice = getRollDice(lastValue[0], select, dicebox, detailItemArray, lastValue[1]);
             } else {
-              // 값에 D가 없으면 추가값으로 분류.
-              mod = newValues[xx];
-    
-              modSpan = <ModItem key={uuid()} modType={'bonusMod'} value={`+${mod}`} />;
-              
-              modSpanArray.push(modSpan);
-              modArray.push(mod);
+              rollDice = getRollDice(dice, select, dicebox, detailItemArray);
             }
+          } else {
+            mod = Number(newValues[xx]);
+            
+            if (newValues[xx].includes('-')) {
+              modSpan = <ModItem key={uuid()} modType={'penaltyMod'} value={mod} />;
+            } else {
+              modSpan = <ModItem key={uuid()} modType={'bonusMod'} value={`+${mod}`} />;
+            }
+            
+            modSpanArray.push(modSpan);
+            modArray.push(mod);
           }
         }
-        
-        dicetotal = dicebox.reduce((pre, crr) => { return Number(pre) + Number(crr); }, 0);
+  
+        dicestotal = dicebox.reduce((pre, crr) => { return Number(pre) + Number(crr); }, 0);
         modTotal = modArray ? modArray.reduce((pre, crr) => { return Number(pre) + Number(crr); }, 0) : 0;
-        dicetotal = dicetotal + modTotal;
+        dicestotal = dicestotal + modTotal;
         
         rolldetail = (
           <RollDetails
             key={uuid()}
-            total={dicetotal}
+            total={dicestotal}
             value={newValue}
             detailItemArray={detailItemArray}
             modSpanArray={modSpanArray}

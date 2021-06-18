@@ -84,7 +84,7 @@ const TopDiceInput = () => {
   }, []);
   
   const onInputDice = useCallback((e) => {
-    e.target.value = e.target.value.replace(/[^ㅇd0-9-+ ]/gi, '');
+    e.target.value = e.target.value.replace(/[^ㅇd0-9-+* ]/gi, '');
   }, []);
   
   const onKeyUpRollDices = useCallback((e) => {

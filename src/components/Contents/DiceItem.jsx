@@ -4,7 +4,7 @@ import fontSize from '@/data/fontSize';
 
 const DiceItem = ({ roll, color, }) => {
   const colorType = {
-    'critical': '#147500',
+    'critical': '#1e8609',
     'fumble': '#a80000',
     'normal': '#333333',
   };
@@ -12,11 +12,11 @@ const DiceItem = ({ roll, color, }) => {
   const style = css`
     margin-right: 5px;
     background-color: ${colorType[color]};
+    color: #ffffff;
     display: inline-block;
     margin-top: 2px;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
     padding: 2px 10px;
-    color: #ffffff;
     border-radius: 5px;
     transition: all 0.3s;
 

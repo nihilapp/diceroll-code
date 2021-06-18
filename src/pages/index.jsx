@@ -38,10 +38,12 @@ const IndexPage = () => {
         border: 1px solid #88888850;
         
         & > span {
-          background-color: #ff4242;
+          background-color: #ff4242aa;
           color: #ffffff;
           border-radius: 5px;
           padding: 0 5px;
+          font-weight: 900;
+          border: 2px solid #ff4242dd;
         }
         
         &:nth-of-type(1) {
@@ -90,10 +92,12 @@ const IndexPage = () => {
           </ul>
           <Heading2>주사위식 예시</Heading2>
           <ul>
-            <li><strong>d20:</strong> 20면체 주사위 1개 굴리기</li>
-            <li><strong>7ㅇ45:</strong> 45면체 주사위 7개 굴리기</li>
-            <li><strong>d8+7+2d6:</strong> 8면체 주사위 1개 + 7 + 6면체 주사위 2개 굴리기</li>
-            <li><strong>3D6 3D6:</strong> 6면체 주사위 3개를 따로 두 번 굴리기</li>
+            <li><strong>d20:</strong> 20면체 주사위 1개를 굴립니다.</li>
+            <li><strong>7ㅇ45:</strong> 45면체 주사위 7개를 굴립니다.</li>
+            <li><strong>d8+7+2d6:</strong> 8면체 주사위 1개 + 7 + 6면체 주사위 2개를 굴리고 값을 더합니다.</li>
+            <li><strong>3D6 3D6:</strong> 6면체 주사위 3개를 따로 두 번 굴리고 값을 따로 계산합니다.</li>
+            <li><strong>3d6+3d6+3d6:</strong> 6면체 주사위 3개를 세번 굴리고 값을 더합니다.</li>
+            <li><strong>3D6*3:</strong> 위와 같은 주사위식을 줄일 수 있습니다.</li>
           </ul>
         </div>
       </AppLayout>

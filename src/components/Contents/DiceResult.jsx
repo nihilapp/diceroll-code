@@ -9,42 +9,76 @@ const DiceResult = () => {
   
   const style = css`
     & > .result-item {
-      background-color: #eeeeee;
-      margin: 20px 0;
-      padding: 10px;
-      border-radius: 0 10px 10px 0;
-      transition: all 0.3s;
-      border-left: 30px solid #aaaaaa;
-      box-shadow: 0 0 5px -2px #000000;
+      display: flex;
+      flex-direction: row;
+      margin: 30px 0;
       
-      &:nth-of-type(1) {
-        border-left: 30px solid #ff4242;
+      &:before {
+        content: '\\f061';
+        background-color: #999999;
+        border-radius: 40px;
+        margin-right: 20px;
+        font-weight: 900;
+        font-family: 'Font Awesome 5 Free', sans-serif;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        color: #ffffff;
       }
       
-      & > .message-box {
-        font-weight: 900;
-        color: #333333;
-        transition: all 0.3s;
+      &:nth-of-type(1) {
+        margin-top: 20px;
         
-        & span.red {
-          background-color: #ff4242;
-          color: #ffffff;
-          padding: 0 10px;
-          border-radius: 5px;
-          margin-right: 10px;
+        &:before {
+          background-color: #333333;
+        }
+      }
+      
+      &:nth-last-of-type(1) {
+        margin-bottom: 0;
+      }
+      
+      & > .item-body {
+        padding: 10px 0;
+        transition: all 0.3s;
+        flex: 1;
+
+        &:nth-of-type(1) {
+
+        }
+
+        & > .message-box {
+          font-weight: 900;
+          color: #333333;
+          transition: all 0.3s;
+          background-color: #eeeeee;
+          padding: 10px;
+          border: 2px solid #33333330;
+          border-radius: 10px;
+
+          & span.red {
+            background-color: #ce1c1c;
+            color: #ffffff;
+            padding: 0 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+          }
         }
       }
 
       @media (min-width: 1px) and (max-width: 600px) {
-        & > .message-box {font-size: ${fontSize[3]};}
+        & .message-box {font-size: ${fontSize[5]};}
+        &:before {font-size: ${fontSize[7]};}
       }
 
       @media (min-width: 601px) and (max-width: 900px) {
-        & > .message-box {font-size: ${fontSize[4]};}
+        & .message-box {font-size: ${fontSize[6]};}
+        &:before {font-size: ${fontSize[7]};}
       }
 
       @media (min-width: 901px) {
-        & > .message-box {font-size: ${fontSize[5]};}
+        & .message-box {font-size: ${fontSize[6]};}
+        &:before {font-size: ${fontSize[7]};}
       }
     }
   `;
@@ -54,11 +88,15 @@ const DiceResult = () => {
       <div id='dice-result' css={style}>
         {state.slice().reverse().map((resultList) => (
           <div key={uuid()} className='result-item'>
-            <div className='message-box'>
-              <p>{resultList.ErrorMessage}</p>
-            </div>
-            <div className='detail-box'>
-              {resultList.dicedetails}
+            <div className={'item-body'}>
+              {resultList.ErrorMessage && (
+                <div className='message-box'>
+                  <p>{resultList.ErrorMessage}</p>
+                </div>
+              )}
+              <div className='detail-box'>
+                {resultList.dicedetails}
+              </div>
             </div>
           </div>
         ))}
