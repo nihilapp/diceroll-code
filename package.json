@@ -16,6 +16,7 @@
     "start": "rm -rf node_modules/.cache && rm -rf build/ && next build && next start",
     "build": "rm -rf node_modules/.cache && rm -rf build/ && next build",
     "export": "rm -rf node_modules/.cache && rm -rf build/ && next build && next export -o TheDiceRoll.github.io/ && touch TheDiceRoll.github.io/.nojekyll && cd ../TheDiceRoll.github.io && mv .git ../backup && cd ../ && rm -rf TheDiceRoll.github.io && cd TheDiceRoll && mv TheDiceRoll.github.io ../ && cd ../backup && mv .git ../TheDiceRoll.github.io && cd ../TheDiceRoll.github.io && git add .",
+    "vercel-deploy": "next build && next export",
     "clean": "npm cache clean --force"
   },
   "keywords": [],
