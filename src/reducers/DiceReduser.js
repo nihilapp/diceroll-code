@@ -28,7 +28,9 @@ const DiceReduser = (state, action) => {
       if (value.length === 0) {
         return [
           ...state, {
-            ErrorMessage: (<><span className={'red'}>에러 1</span>값이 없습니다. 주사위식을 입력하세요.</>),
+            ErrorMessage: (
+              <><span className={'red'}>에러 1</span>값이 없습니다. 주사위식을 입력하세요.</>
+            ),
             dicedetails: [],
           },
         ];
@@ -50,7 +52,9 @@ const DiceReduser = (state, action) => {
       if (value.includes('DD' && 'dd')) {
         return [
           ...state, {
-            ErrorMessage: (<><span className={'red'}>에러 3</span>D는 하나만 입력하고 숫자를 입력해야 합니다.</>),
+            ErrorMessage: (
+              <><span className={'red'}>에러 3</span><span className={'blue'}>D</span>는 하나만 입력하고 숫자를 입력해야 합니다.</>
+            ),
             dicedetails: [],
           },
         ];
@@ -62,7 +66,7 @@ const DiceReduser = (state, action) => {
         if (value[x].indexOf('+') === value[x].length - 1) {
           return [
             ...state, {
-              ErrorMessage: (<><span className={'red'}>에러 5</span>더할 값을 정확히 입력해야 합니다.</>),
+              ErrorMessage: (<><span className={'red'}>에러 5</span>보너스 값을 정확히 입력해야 합니다.</>),
               dicedetails: [],
             },
           ];
@@ -93,7 +97,9 @@ const DiceReduser = (state, action) => {
         if (newValue.indexOf('D') === -1) {
           return [
             ...state, {
-              ErrorMessage: (<><span className={'red'}>에러 8</span>주사위식에 D가 필요합니다.</>),
+              ErrorMessage: (
+                <><span className={'red'}>에러 8</span>주사위식에 <span className={'blue'}>D</span>가 필요합니다.</>
+              ),
               dicedetails: [],
             },
           ];
@@ -114,7 +120,9 @@ const DiceReduser = (state, action) => {
         if (newValue.indexOf('++') !== - 1) {
           return [
             ...state, {
-              ErrorMessage: (<><span className={'red'}>에러 6</span>+는 하나만 입력하고 숫자를 입력해야 합니다.</>),
+              ErrorMessage: (
+                <><span className={'red'}>에러 6</span><span className={'blue'}>+</span>는 하나만 입력하고 숫자를 입력해야 합니다.</>
+              ),
               dicedetails: [],
             },
           ];
@@ -126,14 +134,18 @@ const DiceReduser = (state, action) => {
           if (newValues[xx].indexOf('D') === newValues[xx].length - 1) {
             return [
               ...state, {
-                ErrorMessage: (<><span className={'red'}>에러 4</span>D 뒤에 숫자를 입력해야합니다.</>),
+                ErrorMessage: (
+                  <><span className={'red'}>에러 4</span><span className={'blue'}>D</span> 뒤에 숫자를 입력해야합니다.</>
+                ),
                 dicedetails: [],
               },
             ];
           } else if (newValues[xx].indexOf('DD') !== - 1) {
             return [
               ...state, {
-                ErrorMessage: (<><span className={'red'}>에러 3</span>D는 하나만 입력하고 숫자를 입력해야 합니다.</>),
+                ErrorMessage: (
+                  <><span className={'red'}>에러 3</span><span className={'blue'}>D</span>는 하나만 입력해야합니다.</>
+                ),
                 dicedetails: [],
               },
             ];
@@ -153,17 +165,46 @@ const DiceReduser = (state, action) => {
             dice = newValues[xx];
             // 값에 D가 포함되어있으면 다이스로 분류.
             
-            if (dice.includes('*')) {
-              lastValue = dice.split('*');
-              rollDice = getRollDice(lastValue[0], select, dicebox, detailItemArray, lastValue[1]);
+            if (dice.includes('-')) {
+              return [
+                ...state, {
+                  ErrorMessage: (
+                    <>
+                      <span className={'red'}>에러 9</span>패널티 값을 넣을 때에는 <span className={'blue'}>[Dn+-n]</span>
+                      의 형식을 따라야 합니다.
+                    </>
+                  ),
+                  dicedetails: [],
+                },
+              ];
             } else {
-              rollDice = getRollDice(dice, select, dicebox, detailItemArray);
+              if (dice.includes('*')) {
+                lastValue = dice.split('*');
+                rollDice = getRollDice(lastValue[0], select, dicebox, detailItemArray, lastValue[1]);
+              } else {
+                rollDice = getRollDice(dice, select, dicebox, detailItemArray);
+              }
             }
           } else {
             mod = Number(newValues[xx]);
+            const modValue = newValues[xx];
             
-            if (newValues[xx].includes('-')) {
-              modSpan = <ModItem key={uuid()} modType={'penaltyMod'} value={mod} />;
+            const numberSearch = /[^0-9]/g;
+            const matchArray = modValue.match(numberSearch);
+            
+            console.log(matchArray);
+            
+            if (modValue.includes('-')) {
+              if (matchArray.length !== 1) {
+                return [
+                  ...state, {
+                    ErrorMessage: (<><span className={'red'}>에러 10</span>패널티 값을 정확히 입력해야 합니다.</>),
+                    dicedetails: [],
+                  },
+                ];
+              } else {
+                modSpan = <ModItem key={uuid()} modType={'penaltyMod'} value={mod} />;
+              }
             } else {
               modSpan = <ModItem key={uuid()} modType={'bonusMod'} value={`+${mod}`} />;
             }

@@ -12,7 +12,7 @@ const DiceResult = () => {
       display: flex;
       flex-direction: row;
       margin: 30px 0;
-      
+
       &:before {
         content: '\\f061';
         background-color: #999999;
@@ -25,19 +25,19 @@ const DiceResult = () => {
         padding: 10px;
         color: #ffffff;
       }
-      
+
       &:nth-of-type(1) {
         margin-top: 20px;
-        
+
         &:before {
           background-color: #333333;
         }
       }
-      
+
       &:nth-last-of-type(1) {
         margin-bottom: 0;
       }
-      
+
       & > .item-body {
         padding: 10px 0;
         transition: all 0.3s;
@@ -56,29 +56,55 @@ const DiceResult = () => {
           border: 2px solid #33333330;
           border-radius: 10px;
 
-          & span.red {
-            background-color: #ce1c1c;
-            color: #ffffff;
-            padding: 0 10px;
-            border-radius: 5px;
-            margin-right: 10px;
+          & span {
+            &.red {
+              background-color: #ce1c1c;
+              color: #ffffff;
+              padding: 0 10px;
+              border-radius: 5px;
+              margin-right: 10px;
+              font-size: 90%;
+            }
+
+            &.blue {
+              background-color: #5d88f9;
+              color: #ffffff;
+              border-radius: 5px;
+              font-size: 90%;
+              padding: 0 10px;
+            }
           }
         }
       }
 
       @media (min-width: 1px) and (max-width: 600px) {
-        & .message-box {font-size: ${fontSize[5]};}
-        &:before {font-size: ${fontSize[7]};}
+        & .message-box {
+          font-size: ${ fontSize[5] };
+        }
+
+        &:before {
+          font-size: ${ fontSize[7] };
+        }
       }
 
       @media (min-width: 601px) and (max-width: 900px) {
-        & .message-box {font-size: ${fontSize[6]};}
-        &:before {font-size: ${fontSize[7]};}
+        & .message-box {
+          font-size: ${ fontSize[6] };
+        }
+
+        &:before {
+          font-size: ${ fontSize[7] };
+        }
       }
 
       @media (min-width: 901px) {
-        & .message-box {font-size: ${fontSize[6]};}
-        &:before {font-size: ${fontSize[7]};}
+        & .message-box {
+          font-size: ${ fontSize[6] };
+        }
+
+        &:before {
+          font-size: ${ fontSize[7] };
+        }
       }
     }
   `;
