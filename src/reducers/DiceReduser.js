@@ -189,13 +189,13 @@ const DiceReduser = (state, action) => {
             mod = Number(newValues[xx]);
             const modValue = newValues[xx];
             
-            const numberSearch = /[^0-9]/g;
-            const matchArray = modValue.match(numberSearch);
-            
-            console.log(matchArray);
+            const numberIgnoreSearch = /[^0-9]/g;
+            const numberSearch = /[0-9]/g;
+            const matchNoNumberArray = modValue.match(numberIgnoreSearch);
+            const matchNumberArray = modValue.match(numberSearch);
             
             if (modValue.includes('-')) {
-              if (matchArray.length !== 1) {
+              if (matchNoNumberArray.length !== 1) {
                 return [
                   ...state, {
                     ErrorMessage: (<><span className={'red'}>에러 10</span>패널티 값을 정확히 입력해야 합니다.</>),
@@ -203,7 +203,17 @@ const DiceReduser = (state, action) => {
                   },
                 ];
               } else {
-                modSpan = <ModItem key={uuid()} modType={'penaltyMod'} value={mod} />;
+                if (matchNumberArray === null) {
+                  return [
+                    ...state, {
+                      ErrorMessage: (<><span className={'red'}>에러 10</span>패널티 값을 정확히 입력해야 합니다.</>),
+                      dicedetails: [],
+                    },
+                  ];
+                } else {
+                  modSpan = <ModItem key={uuid()} modType={'penaltyMod'} value={mod} />;
+                }
+                
               }
             } else {
               modSpan = <ModItem key={uuid()} modType={'bonusMod'} value={`+${mod}`} />;

@@ -43,10 +43,6 @@ const DiceResult = () => {
         transition: all 0.3s;
         flex: 1;
 
-        &:nth-of-type(1) {
-
-        }
-
         & > .message-box {
           font-weight: 900;
           color: #333333;
@@ -67,11 +63,14 @@ const DiceResult = () => {
             }
 
             &.blue {
-              background-color: #5d88f9;
-              color: #ffffff;
+              background-color: #5d88f930;
+              color: #5d88f9;
               border-radius: 5px;
               font-size: 90%;
               padding: 0 10px;
+              margin: 0 2px;
+              box-sizing: border-box;
+              border: 1px solid #5d88f990;
             }
           }
         }
