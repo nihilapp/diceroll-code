@@ -5,25 +5,23 @@ const sitemapGenerator = async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
 
   const basePath = 'https://thediceroll.github.io';
-  
+
   const defaultPages = [
     '/',
     '/preset',
     '/custom',
   ];
-  
+
   const ruleSet = [];
 
-  const defaultPagesRuleSet = defaultPages.map((url) => {
-    return `
-      <url>
-        <loc>${basePath}${url}</loc>
-        <changefreq>daily</changefreq>
-        <priority>1</priority>
-      </url>
-    `;
-  }).join('');
-  
+  const defaultPagesRuleSet = defaultPages.map((url) => `
+    <url>
+      <loc>${basePath}${url}</loc>
+      <changefreq>daily</changefreq>
+      <priority>1</priority>
+    </url>
+  `).join('');
+
   ruleSet.push(defaultPagesRuleSet);
 
   const sitemap = `

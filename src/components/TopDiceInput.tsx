@@ -1,22 +1,26 @@
-import React, { useState, useCallback, useContext, useRef } from 'react';
+import React, {
+  useState, useCallback, useRef
+} from 'react';
 import { css } from '@emotion/react';
-import { DiceContext } from '@/store/DiceContext';
+import { useDispatch } from 'react-redux';
 import Roll from '@/components/Contents/Roll';
-import { RESET_FORM, ROLL_DICE } from '@/reducers/DiceReduser';
 import fontSize from '@/data/fontSize';
+import { RollDice, ResetForm } from '@/reducers/DiceReducer';
+import { AppDispatch } from '@/types';
 
 const TopDiceInput = () => {
   const [ values, setValues, ] = useState('');
-  const { dispatch, } = useContext(DiceContext);
+  const dispatch = useDispatch<AppDispatch>();
+
   const inputRef = useRef(null);
-  
+
   const style = css`
     padding: 10px;
     background-color: #666666;
     border-radius: 10px;
     margin-bottom: 20px;
     transition: all 0.3s;
-    
+
     & > #roll-input {
       outline: none;
       transition: all 0.3s;
@@ -61,53 +65,52 @@ const TopDiceInput = () => {
       }
     }
   `;
-  
+
   const onclickRollDices = useCallback(() => {
-    dispatch({
-      type: ROLL_DICE,
+    dispatch(RollDice({
       value: inputRef.current.value,
-    });
+    }));
     inputRef.current.focus();
   }, []);
-  
+
   const onclickRollRest = useCallback(() => {
-    dispatch({
-      type: RESET_FORM,
-    });
-    document.getElementById('roll-type').value = 'normal';
+    dispatch(ResetForm());
+    const rollType = document.getElementById('roll-type') as HTMLSelectElement;
+    rollType.value = 'normal';
+
     inputRef.current.focus();
     setValues('');
   }, []);
-  
+
   const onChangeInputDice = useCallback((e) => {
     setValues(e.target.value);
   }, []);
-  
+
   const onInputDice = useCallback((e) => {
     e.target.value = e.target.value.replace(/[^ㅇd0-9-+* ]/gi, '');
   }, []);
-  
+
   const onKeyUpRollDices = useCallback((e) => {
     if (e.keyCode === 13) {
-      dispatch({
-        type: ROLL_DICE,
+      dispatch(RollDice({
         value: inputRef.current.value,
-      });
+      }));
     }
   }, []);
-  
+
   return (
     <>
       <div css={style}>
         <input
-          id={'roll-input'}
+          id='roll-input'
           type='text'
-          placeholder={'주사위식을 입력하세요.'}
-          value={values} ref={inputRef}
+          placeholder='주사위식을 입력하세요.'
+          value={values}
+          ref={inputRef}
           onChange={onChangeInputDice}
           onInput={onInputDice}
           onKeyUp={onKeyUpRollDices}
-          autoComplete={'off'}
+          autoComplete='off'
           required
         />
         <Roll onclickRollDices={onclickRollDices} onclickRollRest={onclickRollRest} />

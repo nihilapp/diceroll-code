@@ -2,7 +2,12 @@ import React from 'react';
 import { css } from '@emotion/react';
 import fontSize from '@/data/fontSize';
 
-const Roll = ({ onclickRollDices, onclickRollRest, }) => {
+interface Props {
+  onclickRollDices: () => void;
+  onclickRollRest: () => void;
+}
+
+const Roll = ({ onclickRollDices, onclickRollRest, }: Props) => {
   const style = css`
     display: flex;
     flex-direction: row;
@@ -87,17 +92,17 @@ const Roll = ({ onclickRollDices, onclickRollRest, }) => {
       }
     }
   `;
-  
+
   return (
     <>
       <div css={style}>
-        <select name='roll-type' id={'roll-type'} defaultValue='normal'>
+        <select name='roll-type' id='roll-type' defaultValue='normal'>
           <option value='normal'>랜덤</option>
           <option value='maximum'>최대값</option>
           <option value='minimum'>최소값</option>
         </select>
-        <button id={'roll-dice'} onClick={onclickRollDices}>굴리기</button>
-        <button id={'roll-reset'} onClick={onclickRollRest}>초기화</button>
+        <button type='button' id='roll-dice' onClick={onclickRollDices}>굴리기</button>
+        <button type='button' id='roll-reset' onClick={onclickRollRest}>초기화</button>
       </div>
     </>
   );

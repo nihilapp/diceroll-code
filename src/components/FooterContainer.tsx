@@ -7,7 +7,7 @@ const FooterContainer = () => {
   const style = css`
     margin-top: 20px;
     user-select: none;
-    
+
     & > p {
       padding: 10px;
       text-align: center;
@@ -37,7 +37,7 @@ const FooterContainer = () => {
       p {font-size: ${fontSize[3]};}
     }
   `;
-  
+
   return (
     <>
       <footer css={style}>

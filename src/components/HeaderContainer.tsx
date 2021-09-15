@@ -7,7 +7,7 @@ import fontSize from '@/data/fontSize';
 const HeaderContainer = () => {
   const headerStyle = css`
     margin-bottom: 20px;
-    
+
     & > div {
       background-color: #333333;
       border-radius: 0 0 20px 20px;
@@ -33,14 +33,14 @@ const HeaderContainer = () => {
           transition: all 0.3s;
           font-weight: 500;
           box-sizing: border-box;
-          
+
           &:nth-of-type(1):before {
             content: '\\f015';
             font-family: 'Font Awesome 5 Free', sans-serif;
             font-weight: 900;
             margin-right: 5px;
           }
-          
+
           &:nth-of-type(2):before,
           &:nth-of-type(3):before {
             content: '\\f6cf';
@@ -61,20 +61,20 @@ const HeaderContainer = () => {
         }
       }
     }
-    
+
     @media (min-width: 1px) and (max-width: 600px) {
       a {font-size: ${fontSize[2]};}
       & > div {
         padding-top: 10px;
-        
+
         & > h1 {
           text-align: center;
         }
-        
+
         & > nav {
           margin-top: 10px;
           border-top: 2px dotted #88888850;
-          
+
           & > a {
             width: 33.33%;
             text-align: center;
@@ -86,7 +86,7 @@ const HeaderContainer = () => {
         }
       }
     }
-    
+
     @media (min-width: 601px) and (max-width: 900px) {
       a {font-size: ${fontSize[2]};}
       & > div {
@@ -100,14 +100,14 @@ const HeaderContainer = () => {
         }
       }
     }
-    
+
     @media (min-width: 901px) {
       a {font-size: ${fontSize[3]};}
       & > div {
         display: flex;
         flex-direction: row;
         align-items: center;
-        
+
         & > nav {
           flex: 1;
           text-align: right;
@@ -115,16 +115,16 @@ const HeaderContainer = () => {
       }
     }
   `;
-  
+
   return (
     <>
       <header css={headerStyle}>
         <div>
           <h1>DiceRoll v{Config.version}</h1>
           <nav>
-            <Link href={'/'}><a>홈</a></Link>
-            <Link href={'/preset'}><a>주사위 프리셋</a></Link>
-            <Link href={'/custom'}><a>커스텀 주사위</a></Link>
+            <Link href='/'><a>홈</a></Link>
+            <Link href='/preset'><a>주사위 프리셋</a></Link>
+            <Link href='/custom'><a>커스텀 주사위</a></Link>
           </nav>
         </div>
       </header>

@@ -1,6 +1,6 @@
 import React from 'react';
-import AppLayout from '@/layouts/AppLayout';
 import { css } from '@emotion/react';
+import AppLayout from '@/layouts/AppLayout';
 import fontSize from '@/data/fontSize';
 import Heading2 from '@/components/Contents/Heading2';
 
@@ -16,14 +16,14 @@ const IndexPage = () => {
       transition: all 0.3s;
       margin: 40px 0;
     }
-    
+
     & > ul {
       margin: 40px 0;
-      
+
       &:nth-last-of-type(1) {
         margin-bottom: 0;
       }
-      
+
       & > li {
         font-weight: 500;
         letter-spacing: -1px;
@@ -36,7 +36,7 @@ const IndexPage = () => {
         border-radius: 10px;
         background-color: #dddddd90;
         border: 1px solid #88888850;
-        
+
         & > span {
           background-color: #ff4242aa;
           color: #ffffff;
@@ -45,15 +45,15 @@ const IndexPage = () => {
           font-weight: 900;
           border: 2px solid #ff4242dd;
         }
-        
+
         &:nth-of-type(1) {
           margin-top: 0;
         }
-        
+
         &:nth-last-of-type(1) {
           margin-bottom: 0;
         }
-        
+
         &:before {
           content: '\\f0a9';
           font-family: 'Font Awesome 5 Free', sans-serif;
@@ -62,20 +62,20 @@ const IndexPage = () => {
         }
       }
     }
-    
+
     @media (min-width: 1px) and (max-width: 600px) {
       p, ul > li {font-size: ${fontSize[1]};}
     }
-    
+
     @media (min-width: 601px) and (max-width: 900px) {
       p, ul > li {font-size: ${fontSize[2]};}
     }
-    
+
     @media (min-width: 901px) {
       p, ul > li {font-size: ${fontSize[3]};}
     }
   `;
-  
+
   return (
     <>
       <AppLayout>

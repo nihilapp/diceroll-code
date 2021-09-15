@@ -1,12 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
 import { css } from '@emotion/react';
-import { DiceContext } from '@/store/DiceContext';
 import { v4 as uuid } from 'uuid';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import fontSize from '@/data/fontSize';
+import { AppDispatch, RootState } from '@/types';
+import { ResetForm } from '@/reducers/DiceReducer';
 
 const DiceResult = () => {
-  const { state, } = useContext(DiceContext);
-  
+  const state = useSelector((state: RootState) => state.dice);
+  const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
+
+  useEffect(() => {
+    dispatch(ResetForm());
+  }, [ router.asPath, ]);
+
   const style = css`
     & > .result-item {
       display: flex;
@@ -78,42 +87,42 @@ const DiceResult = () => {
 
       @media (min-width: 1px) and (max-width: 600px) {
         & .message-box {
-          font-size: ${ fontSize[5] };
+          font-size: ${fontSize[5]};
         }
 
         &:before {
-          font-size: ${ fontSize[7] };
+          font-size: ${fontSize[7]};
         }
       }
 
       @media (min-width: 601px) and (max-width: 900px) {
         & .message-box {
-          font-size: ${ fontSize[6] };
+          font-size: ${fontSize[6]};
         }
 
         &:before {
-          font-size: ${ fontSize[7] };
+          font-size: ${fontSize[7]};
         }
       }
 
       @media (min-width: 901px) {
         & .message-box {
-          font-size: ${ fontSize[6] };
+          font-size: ${fontSize[6]};
         }
 
         &:before {
-          font-size: ${ fontSize[7] };
+          font-size: ${fontSize[7]};
         }
       }
     }
   `;
-  
+
   return (
     <>
       <div id='dice-result' css={style}>
         {state.slice().reverse().map((resultList) => (
           <div key={uuid()} className='result-item'>
-            <div className={'item-body'}>
+            <div className='item-body'>
               {resultList.ErrorMessage && (
                 <div className='message-box'>
                   <p>{resultList.ErrorMessage}</p>

@@ -2,22 +2,26 @@ import React from 'react';
 import { css } from '@emotion/react';
 import fontSize from '@/data/fontSize';
 
-const DiceItem = ({ roll, color, }) => {
-  const colorType = {
-    'critical': '#1e8609',
-    'fumble': '#a80000',
-    'normal': '#333333',
+interface Props {
+  modType: ('penaltyMod' | 'bonusMod');
+  value: (number | string);
+}
+
+const ModItem = ({ modType, value, }: Props) => {
+  const mod = {
+    penaltyMod: '#a80000',
+    bonusMod: '#147500',
   };
-  
+
   const style = css`
+    background-color: ${mod[modType]};
     margin-right: 5px;
-    background-color: ${colorType[color]};
-    color: #ffffff;
-    display: inline-block;
     margin-top: 2px;
-    margin-bottom: 2px;
-    padding: 2px 10px;
+    margin-bottom: 1px;
+    display: inline-block;
+    color: #ffffff;
     border-radius: 5px;
+    padding: 2px 10px;
     transition: all 0.3s;
 
     @media (min-width: 1px) and (max-width: 600px) {
@@ -32,12 +36,12 @@ const DiceItem = ({ roll, color, }) => {
       font-size: ${fontSize[3]};
     }
   `;
-  
+
   return (
     <>
-      <span css={style} className={'dice-item'}>{roll}</span>
+      <span css={style} className='mod-item'>{value}</span>
     </>
   );
 };
 
-export default DiceItem;
+export default ModItem;

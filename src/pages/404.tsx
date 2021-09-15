@@ -1,6 +1,6 @@
 import React from 'react';
-import AppLayout from '@/layouts/AppLayout';
 import { css } from '@emotion/react';
+import AppLayout from '@/layouts/AppLayout';
 
 const NotPonud404 = () => {
   const style = css`
@@ -9,18 +9,18 @@ const NotPonud404 = () => {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
+
     & > p {
       text-align: center;
       color: #333333;
-      
+
       & > span {
         &:nth-of-type(1) {
           font-weight: 900;
           font-size: 32pt;
           color: #ff4242;
         }
-        
+
         &:nth-of-type(2) {
           font-weight: 500;
           font-size: 20pt;
@@ -28,7 +28,7 @@ const NotPonud404 = () => {
       }
     }
   `;
-  
+
   return (
     <>
       <AppLayout>

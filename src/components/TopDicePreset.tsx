@@ -1,21 +1,24 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { css } from '@emotion/react';
-import { DiceContext } from '@/store/DiceContext';
-import { ROLL_DICE, RESET_FORM } from '@/reducers/DiceReduser';
+import { useDispatch } from 'react-redux';
 import Roll from '@/components/Contents/Roll';
 import fontSize from '@/data/fontSize';
+import dicePresets from '@/data/dicePresets';
+import { RollDice, ResetForm } from '@/reducers/DiceReducer';
+import { AppDispatch } from '@/types';
 
 const TopDicePreset = () => {
-  const { suffixs, dispatch, } = useContext(DiceContext);
   const dicePreset = useRef(null);
-  
+
+  const dispatch = useDispatch<AppDispatch>();
+
   const style = css`
     padding: 10px;
     background-color: #666666;
     border-radius: 10px;
     margin-bottom: 20px;
     transition: all 0.3s;
-    
+
     & > #preset-list {
       text-align-last: center;
       outline: none;
@@ -61,28 +64,29 @@ const TopDicePreset = () => {
       }
     }
   `;
-  
+
   const onclickRollDices = useCallback(() => {
-    dispatch({
-      type: ROLL_DICE,
+    dispatch(RollDice({
       value: dicePreset.current.value,
-    });
+    }));
   }, []);
-  
+
   const onclickRollRest = useCallback(() => {
-    dispatch({
-      type: RESET_FORM,
-    });
-    document.getElementById('preset-list').value = 'none';
-    document.getElementById('roll-type').value = 'normal';
+    dispatch(ResetForm());
+
+    const presetList = document.getElementById('preset-list') as HTMLSelectElement;
+    const rollType = document.getElementById('roll-type') as HTMLSelectElement;
+
+    presetList.value = 'none';
+    rollType.value = 'normal';
   }, []);
-  
+
   return (
     <>
       <div css={style}>
-        <select id={'preset-list'} ref={dicePreset} defaultValue={'none'}>
+        <select id='preset-list' ref={dicePreset} defaultValue='none'>
           <option value='none' disabled>주사위 프리셋</option>
-          {suffixs.map(suffix => (
+          {dicePresets.map((suffix) => (
             <option key={suffix} value={suffix}>{suffix}</option>
           ))}
         </select>
