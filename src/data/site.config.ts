@@ -1,5 +1,5 @@
 const config = {
-  version: '3.7.0',
+  version: '3.8.0',
   year: new Date().getFullYear(),
   nickname: 'NIHILncunia',
 };

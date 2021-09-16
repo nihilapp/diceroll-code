@@ -86,7 +86,7 @@ const TopDicePreset = () => {
       <div css={style}>
         <select id='preset-list' ref={dicePreset} defaultValue='none'>
           <option value='none' disabled>주사위 프리셋</option>
-          {dicePresets.map((suffix) => (
+          {dicePresets.map((suffix: string) => (
             <option key={suffix} value={suffix}>{suffix}</option>
           ))}
         </select>
