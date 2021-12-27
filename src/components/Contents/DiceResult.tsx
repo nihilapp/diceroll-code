@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { v4 as uuid } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import fontSize from '@/data/fontSize';
+import { sizeData } from '@/data';
 import { AppDispatch, RootState } from '@/types';
 import { ResetForm } from '@/reducers/DiceReducer';
 
@@ -16,106 +16,106 @@ const DiceResult = () => {
     dispatch(ResetForm());
   }, [ router.asPath, ]);
 
-  const style = css`
-    & > .result-item {
-      display: flex;
-      flex-direction: row;
-      margin: 30px 0;
+  const style = css({
+    '& > .result-item': {
+      display: 'flex',
+      flexDirection: 'row',
+      margin: '30px 0',
 
-      &:before {
-        content: '\\f061';
-        background-color: #999999;
-        border-radius: 40px;
-        margin-right: 20px;
-        font-weight: 900;
-        font-family: 'Font Awesome 5 Free', sans-serif;
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        color: #ffffff;
-      }
+      '&:before': {
+        content: '"\\f061"',
+        backgroundColor: '#999999',
+        borderRadius: '40px',
+        marginRight: '20px',
+        fontWeight: '900',
+        fontFamily: `'Font Awesome 5 Free', sans-serif`,
+        display: 'flex',
+        alignItems: 'center',
+        padding: '10px',
+        color: '#ffffff',
+      },
 
-      &:nth-of-type(1) {
-        margin-top: 20px;
+      '&:nth-of-type(1)': {
+        marginTop: '20px',
 
-        &:before {
-          background-color: #333333;
-        }
-      }
+        '&:before': {
+          backgroundColor: '#333333',
+        },
+      },
 
-      &:nth-last-of-type(1) {
-        margin-bottom: 0;
-      }
+      '&:nth-last-of-type(1)': {
+        marginBottom: '0',
+      },
 
-      & > .item-body {
-        padding: 10px 0;
-        transition: all 0.3s;
-        flex: 1;
+      '& > .item-body': {
+        padding: '10px 0',
+        flex: '1',
 
-        & > .message-box {
-          font-weight: 900;
-          color: #333333;
-          transition: all 0.3s;
-          background-color: #eeeeee;
-          padding: 10px;
-          border: 2px solid #33333330;
-          border-radius: 10px;
+        '& > .message-box': {
+          fontWeight: '900',
+          color: '#333333',
+          backgroundColor: '#eeeeee',
+          padding: '10px',
+          border: '2px solid #33333330',
+          borderRadius: '10px',
 
-          & span {
-            &.red {
-              background-color: #ce1c1c;
-              color: #ffffff;
-              padding: 0 10px;
-              border-radius: 5px;
-              margin-right: 10px;
-              font-size: 90%;
-            }
+          '& span': {
+            '&.red': {
+              backgroundColor: '#ce1c1c',
+              color: '#ffffff',
+              padding: '0 10px',
+              borderRadius: '5px',
+              marginRight: '10px',
+              fontSize: '90%',
+            },
+            '&.blue': {
+              backgroundColor: '#5d88f930',
+              color: '#5d88f9',
+              borderRadius: '5px',
+              fontSize: '90%',
+              padding: '0 10px',
+              margin: '0 2px',
+              boxSizing: 'border-box',
+              border: '1px solid #5d88f990',
+            },
+          },
+        },
+      },
 
-            &.blue {
-              background-color: #5d88f930;
-              color: #5d88f9;
-              border-radius: 5px;
-              font-size: 90%;
-              padding: 0 10px;
-              margin: 0 2px;
-              box-sizing: border-box;
-              border: 1px solid #5d88f990;
-            }
-          }
-        }
-      }
-
-      @media (min-width: 1px) and (max-width: 600px) {
-        & .message-box {
-          font-size: ${fontSize[5]};
-        }
-
-        &:before {
-          font-size: ${fontSize[7]};
-        }
-      }
-
-      @media (min-width: 601px) and (max-width: 900px) {
-        & .message-box {
-          font-size: ${fontSize[6]};
-        }
-
-        &:before {
-          font-size: ${fontSize[7]};
-        }
-      }
-
-      @media (min-width: 901px) {
-        & .message-box {
-          font-size: ${fontSize[6]};
-        }
-
-        &:before {
-          font-size: ${fontSize[7]};
-        }
-      }
-    }
-  `;
+      '@media all and (min-width: 1024px)': {
+        '& .message-box': {
+          fontSize: `${sizeData[6]}`,
+        },
+        '&:before': {
+          fontSize: `${sizeData[7]}`,
+        },
+      },
+      '@media all and (min-width: 768px) and (max-width: 1023px)': {
+        '& .message-box': {
+          fontSize: `${sizeData[6]}`,
+        },
+        '&:before': {
+          fontSize: `${sizeData[7]}`,
+        },
+      },
+      '@media all and (min-width: 480px) and (max-width: 767px)': {
+        '& .message-box': {
+          fontSize: `${sizeData[5]}`,
+        },
+        '&:before': {
+          fontSize: `${sizeData[7]}`,
+        },
+      },
+      '@media all and (max-width: 479px)': {
+        '& .message-box': {
+          fontSize: `${sizeData[5]}`,
+        },
+        '&:before': {
+          fontSize: `${sizeData[7]}`,
+        },
+      },
+    },
+  });
 
   return (
     <>

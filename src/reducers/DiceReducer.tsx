@@ -245,12 +245,12 @@ export const DiceReducer = createSlice({
         rolldicedetails.push(rolldetail);
 
         modSpanArray = [];
-
-        state.push({
-          ErrorMessage: '',
-          dicedetails: rolldicedetails,
-        });
       }
+
+      state.push({
+        ErrorMessage: '',
+        dicedetails: rolldicedetails,
+      });
     },
     ResetForm: () => initialState,
   },

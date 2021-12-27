@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import fontSize from '@/data/fontSize';
+import { sizeData } from '@/data';
 
 interface Props {
   modType: ('penaltyMod' | 'bonusMod');
@@ -13,29 +13,30 @@ const ModItem = ({ modType, value, }: Props) => {
     bonusMod: '#147500',
   };
 
-  const style = css`
-    background-color: ${mod[modType]};
-    margin-right: 5px;
-    margin-top: 2px;
-    margin-bottom: 1px;
-    display: inline-block;
-    color: #ffffff;
-    border-radius: 5px;
-    padding: 2px 10px;
-    transition: all 0.3s;
+  const style = css({
+    backgroundColor: mod[modType],
+    marginRight: '5px',
+    lineHeight: '1',
+    marginTop: '2px',
+    marginBottom: '2px',
+    display: 'inline-block',
+    color: '#ffffff',
+    borderRadius: '5px',
+    padding: '5px 10px',
 
-    @media (min-width: 1px) and (max-width: 600px) {
-      font-size: ${fontSize[2]};
-    }
-
-    @media (min-width: 601px) and (max-width: 900px) {
-      font-size: ${fontSize[3]};
-    }
-
-    @media (min-width: 901px) {
-      font-size: ${fontSize[3]};
-    }
-  `;
+    '@media all and (min-width: 1024px)': {
+      fontSize: `${sizeData[3]}`,
+    },
+    '@media all and (min-width: 768px) and (max-width: 1023px)': {
+      fontSize: `${sizeData[3]}`,
+    },
+    '@media all and (min-width: 480px) and (max-width: 767px)': {
+      fontSize: `${sizeData[2]}`,
+    },
+    '@media all and (max-width: 479px)': {
+      fontSize: `${sizeData[2]}`,
+    },
+  });
 
   return (
     <>

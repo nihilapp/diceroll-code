@@ -69,6 +69,7 @@ module.exports = {
     'no-useless-constructor': 'off',
     'no-useless-return': 'off',
     'lines-between-class-members': 'off',
+    'arrow-body-style': 'off',
 
     // 임포트 규칙
     'import/extensions': 'off',
@@ -90,6 +91,13 @@ module.exports = {
     ],
     'react/require-default-props': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'react/function-component-definition': 'off',
+    'react/jsx-no-useless-fragment': 'off',
+    'react/no-arrow-function-lifecycle': 'off',
+    'react/no-invalid-html-attribute': 'off',
+    'react/no-unused-class-component-methods': 'off',
+    'react/button-has-type': 'off',
+    'react/destructuring-assignment': 'off',
 
     // 리액트 훅스 규칙
     'react-hooks/exhaustive-deps': 'off',
@@ -106,6 +114,7 @@ module.exports = {
     'jsx-a11y/anchor-has-content': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
 
     // 타입스크립트 규칙
     '@typescript-eslint/interface-name-prefix': 'off',
@@ -115,6 +124,11 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    '@typescript-eslint/indent': [ 'warn', 2, { SwitchCase: 1, }, ],
+    '@typescript-eslint/indent': [ 'warn', 2, {
+      SwitchCase: 1,
+      FunctionExpression: {
+        parameters: 0,
+      },
+    }, ],
   },
 };

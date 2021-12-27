@@ -4,7 +4,7 @@ import React, {
 import { css } from '@emotion/react';
 import { useDispatch } from 'react-redux';
 import Roll from '@/components/Contents/Roll';
-import fontSize from '@/data/fontSize';
+import { sizeData } from '@/data';
 import { RollDice, ResetForm } from '@/reducers/DiceReducer';
 import { AppDispatch } from '@/types';
 
@@ -14,57 +14,61 @@ const TopDiceInput = () => {
 
   const inputRef = useRef(null);
 
-  const style = css`
-    padding: 10px;
-    background-color: #666666;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    transition: all 0.3s;
+  const style = css({
+    padding: '10px',
+    backgroundColor: '#666666',
+    borderRadius: '10px',
+    marginBottom: '20px',
 
-    & > #roll-input {
-      outline: none;
-      transition: all 0.3s;
-      width: 100%;
-      background-color: #333333;
-      color: #ffffff;
-      padding: 5px 10px;
-      box-sizing: border-box;
-      border: none;
-      text-align: center;
-    }
+    '& > #roll-input': {
+      outline: 'none',
+      width: '100%',
+      backgroundColor: '#333333',
+      color: '#ffffff',
+      padding: '5px 10px',
+      boxSizing: 'border-box',
+      border: 'none',
+      textAlign: 'center',
+    },
+  }, {
+    '@media all and (min-width: 1024px)': {
+      display: 'flex',
+      flexDirection: 'row',
 
-    @media (min-width: 1px) and (max-width: 600px) {
-      & > #roll-input {
-        font-size: ${fontSize[2]};
-        margin-bottom: 3px;
-        border-radius: 10px 10px 0 0;
-      }
-    }
+      '& > #roll-input': {
+        flex: '3 1 0',
+        fontSize: `${sizeData[4]}`,
+        marginRight: '3px',
+        borderRadius: '10px 0 0 10px',
+      },
+    },
+    '@media all and (min-width: 768px) and (max-width: 1023px)': {
+      display: 'flex',
+      flexDirection: 'row',
 
-    @media (min-width: 601px) and (max-width: 900px) {
-      display: flex;
-      flex-direction: row;
-
-      & > #roll-input {
-        flex: 3 1 0;
-        font-size: ${fontSize[3]};
-        margin-right: 3px;
-        border-radius: 10px 0 0 10px;
-      }
-    }
-
-    @media (min-width: 901px) {
-      display: flex;
-      flex-direction: row;
-
-      & > #roll-input {
-        flex: 3 1 0;
-        font-size: ${fontSize[4]};
-        margin-right: 3px;
-        border-radius: 10px 0 0 10px;
-      }
-    }
-  `;
+      '& > #roll-input': {
+        flex: '3 1 0',
+        fontSize: `${sizeData[3]}`,
+        marginRight: '3px',
+        borderRadius: '10px 0 0 10px',
+      },
+    },
+    '@media all and (min-width: 480px) and (max-width: 767px)': {
+      '& > #roll-input': {
+        flex: '3 1 0',
+        fontSize: `${sizeData[3]}`,
+        marginBottom: '3px',
+        borderRadius: '10px 10px 0 0',
+      },
+    },
+    '@media all and (max-width: 479px)': {
+      '& > #roll-input': {
+        fontSize: `${sizeData[2]}`,
+        marginBottom: '3px',
+        borderRadius: '10px 10px 0 0',
+      },
+    },
+  });
 
   const onclickRollDices = useCallback(() => {
     dispatch(RollDice({

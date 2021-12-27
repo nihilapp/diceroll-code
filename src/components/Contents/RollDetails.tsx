@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import fontSize from '@/data/fontSize';
+import { FaDiceD20 } from 'react-icons/fa';
+import { sizeData } from '@/data';
 
 interface Props {
   total: number;
@@ -12,84 +13,88 @@ interface Props {
 const RollDetails = ({
   total, value, detailItemArray, modSpanArray,
 }: Props) => {
-  const style = css`
-    margin: 20px 0;
-    background-color: #eeeeee;
-    padding: 10px;
-    border: 2px solid #33333330;
-    border-radius: 10px;
-    width: 100%;
-    box-sizing: border-box;
+  const style = css({
+    margin: '20px 0',
+    backgroundColor: '#eeeeee',
+    padding: '10px',
+    border: '2px solid #33333330',
+    borderRadius: '10px',
+    width: '100%',
+    boxSizing: 'border-box',
 
-    &:nth-of-type(1) {
-      margin-top: 0;
-    }
+    '&:nth-of-type(1)': {
+      marginTop: '0',
+    },
 
-    &:nth-last-of-type(1) {
-      margin-bottom: 0;
-    }
+    '&:nth-last-of-type(1)': {
+      marginBottom: '0',
+    },
 
-    & > .roll-total {
-      font-weight: 900;
-      color: #333333;
-      transition: all 0.3s;
-      margin-bottom: 20px;
+    '& > .roll-total': {
+      fontWeight: '900',
+      color: '#333333',
+      marginBottom: '20px',
 
-      & > span {
-        color: #ffffff;
-        border-radius: 10px;
-        padding: 0 10px;
-        background-color: #333333;
-        display: inline-block;
-      }
-    }
+      '& > span': {
+        color: '#ffffff',
+        borderRadius: '10px',
+        padding: '0 10px',
+        backgroundColor: '#333333',
+        display: 'inline-block',
+      },
+    },
 
-    & > .dice-label {
-      font-weight: 900;
-      color: #333333;
-      margin-bottom: 10px;
-      transition: all 0.3s;
+    '& > .dice-label': {
+      fontWeight: '900',
+      color: '#333333',
+      marginBottom: '20px',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+      lineHeight: '1',
 
-      &:before {
-        content: '\\f6cf';
-        font-family: 'Font Awesome 5 Free', sans-serif;
-        font-weight: 900;
-        margin-right: 10px;
-      }
-    }
+      '& > svg': {
+        marginRight: '5px',
+      },
+    },
 
-    & > .detail-box {
-      & > .dice-details-box {}
+    '& > .detail-box': {
+      '& > .mod-details-box': {
+        padding: '5px',
+        borderRadius: '5px',
+        backgroundColor: '#ffffff',
+        border: '2px solid #33333350',
+        marginTop: '10px',
+      },
+    },
 
-      & > .mod-details-box {
-        padding: 5px;
-        border-radius: 5px;
-        background-color: #ffffff;
-        border: 2px solid #33333350;
-        margin-top: 10px;
-      }
-    }
-
-    @media (min-width: 1px) and (max-width: 600px) {
-      & > .roll-total,
-      & > .dice-label {font-size: ${fontSize[5]};}
-    }
-
-    @media (min-width: 601px) and (max-width: 900px) {
-      & > .roll-total,
-      & > .dice-label {font-size: ${fontSize[6]};}
-    }
-
-    @media (min-width: 901px) {
-      & > .roll-total,
-      & > .dice-label {font-size: ${fontSize[6]};}
-    }
-  `;
+    '@media all and (min-width: 1024px)': {
+      '& > .roll-total, & > .dice-label': {
+        fontSize: `${sizeData[6]}`,
+      },
+    },
+    '@media all and (min-width: 768px) and (max-width: 1023px)': {
+      '& > .roll-total, & > .dice-label': {
+        fontSize: `${sizeData[6]}`,
+      },
+    },
+    '@media all and (min-width: 480px) and (max-width: 767px)': {
+      '& > .roll-total, & > .dice-label': {
+        fontSize: `${sizeData[5]}`,
+      },
+    },
+    '@media all and (max-width: 479px)': {
+      '& > .roll-total, & > .dice-label': {
+        fontSize: `${sizeData[5]}`,
+      },
+    },
+  });
 
   return (
     <>
       <div className='roll-detail' css={style}>
-        <p className='dice-label'>{value}</p>
+        <p className='dice-label'><FaDiceD20 />{value}</p>
         <h3 className='roll-total'>총합: <span>{total}</span></h3>
         <div className='detail-box'>
           <div className='dice-details-box'>

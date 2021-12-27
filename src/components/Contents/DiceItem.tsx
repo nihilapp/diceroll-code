@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import fontSize from '@/data/fontSize';
+import { sizeData } from '@/data';
 
 interface Props {
   roll: number;
@@ -14,29 +14,33 @@ const DiceItem = ({ roll, color, }: Props) => {
     normal: '#333333',
   };
 
-  const style = css`
-    margin-right: 5px;
-    background-color: ${colorType[color]};
-    color: #ffffff;
-    display: inline-block;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    padding: 2px 10px;
-    border-radius: 5px;
-    transition: all 0.3s;
+  const style = css({
+    marginRight: '5px',
+    backgroundColor: colorType[color],
+    color: '#ffffff',
+    display: 'inline-flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '2px',
+    marginBottom: '2px',
+    padding: '5px 10px',
+    lineHeight: '1',
+    borderRadius: '5px',
 
-    @media (min-width: 1px) and (max-width: 600px) {
-      font-size: ${fontSize[2]};
-    }
-
-    @media (min-width: 601px) and (max-width: 900px) {
-      font-size: ${fontSize[3]};
-    }
-
-    @media (min-width: 901px) {
-      font-size: ${fontSize[3]};
-    }
-  `;
+    '@media all and (min-width: 1024px)': {
+      fontSize: `${sizeData[3]}`,
+    },
+    '@media all and (min-width: 768px) and (max-width: 1023px)': {
+      fontSize: `${sizeData[3]}`,
+    },
+    '@media all and (min-width: 480px) and (max-width: 767px)': {
+      fontSize: `${sizeData[2]}`,
+    },
+    '@media all and (max-width: 479px)': {
+      fontSize: `${sizeData[2]}`,
+    },
+  });
 
   return (
     <>

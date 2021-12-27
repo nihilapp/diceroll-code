@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import AppLayout from '@/layouts/AppLayout';
+import { useSiteMeta } from '@/hooks';
 
 const NotPonud404 = () => {
   const style = css`
@@ -29,9 +30,14 @@ const NotPonud404 = () => {
     }
   `;
 
+  const meta = useSiteMeta({
+    title: '404',
+    url: '/404',
+  });
+
   return (
     <>
-      <AppLayout>
+      <AppLayout meta={meta}>
         <div css={style}>
           <p>
             <span>에러 404</span><br />

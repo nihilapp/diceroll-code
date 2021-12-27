@@ -1,4 +1,4 @@
-const fontSize = {
+export const sizeData = {
   7: '32pt',
   6: '22pt',
   5: '18pt',
@@ -7,5 +7,3 @@ const fontSize = {
   2: '12pt',
   1: '10pt',
 };
-
-export default fontSize;

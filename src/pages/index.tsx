@@ -1,8 +1,9 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import AppLayout from '@/layouts/AppLayout';
-import fontSize from '@/data/fontSize';
+import { sizeData } from '@/data/size.data';
 import Heading2 from '@/components/Contents/Heading2';
+import { useSiteMeta } from '@/hooks';
 
 const IndexPage = () => {
   const style = css`
@@ -63,22 +64,28 @@ const IndexPage = () => {
       }
     }
 
-    @media (min-width: 1px) and (max-width: 600px) {
-      p, ul > li {font-size: ${fontSize[1]};}
-    }
-
-    @media (min-width: 601px) and (max-width: 900px) {
-      p, ul > li {font-size: ${fontSize[2]};}
-    }
-
-    @media (min-width: 901px) {
-      p, ul > li {font-size: ${fontSize[3]};}
-    }
+    @media all and (min-width: 1024px) {
+      p, ul > li {font-size: ${sizeData[3]};}
+    },
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      p, ul > li {font-size: ${sizeData[2]};}
+    },
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      p, ul > li {font-size: ${sizeData[2]};}
+    },
+    @media all and (max-width: 479px) {
+      p, ul > li {font-size: ${sizeData[1]};}
+    },
   `;
+
+  const meta = useSiteMeta({
+    title: '홈',
+    url: '/',
+  });
 
   return (
     <>
-      <AppLayout>
+      <AppLayout meta={meta}>
         <div css={style}>
           <Heading2>DiceRoll 소개</Heading2>
           <p>DiceRoll은 TRPG를 하다가 만들게 된 웹 프로그램입니다. 주사위를 간편하게 굴릴 수 있습니다. 미리 준비된 주사위를 굴릴 수도 있고 커스텀 주사위를 굴릴 수도 있습니다. TRPG 뿐만 아니라 다양한 용도로 사용할 수도 있습니다. 의도치는 않았지만 계산기로도... 상단의 프리셋, 커스텀 링크를 클릭해서 해당 페이지로 넘어갈 수 있습니다.</p>
