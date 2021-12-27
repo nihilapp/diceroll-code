@@ -58,6 +58,7 @@ const DiceResult = () => {
           padding: '10px',
           border: '2px solid #33333330',
           borderRadius: '10px',
+          letterSpacing: '-1px',
 
           '& span': {
             '&.red': {

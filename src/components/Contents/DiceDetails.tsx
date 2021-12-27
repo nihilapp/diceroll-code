@@ -42,6 +42,7 @@ const DiceDetails = ({ dice, diceItemBox, total, }: Props) => {
       lineHeight: '1',
       marginTop: '2px',
       marginBottom: '2px',
+      letterSpacing: '-1px',
 
       '& > svg': {
         marginRight: '5px',
@@ -62,6 +63,7 @@ const DiceDetails = ({ dice, diceItemBox, total, }: Props) => {
       lineHeight: '1',
       marginTop: '2px',
       marginBottom: '2px',
+      letterSpacing: '-1px',
 
       '& > svg': {
         marginRight: '5px',

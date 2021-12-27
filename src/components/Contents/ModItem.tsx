@@ -23,6 +23,7 @@ const ModItem = ({ modType, value, }: Props) => {
     color: '#ffffff',
     borderRadius: '5px',
     padding: '5px 10px',
+    letterSpacing: '-1px',
 
     '@media all and (min-width: 1024px)': {
       fontSize: `${sizeData[3]}`,

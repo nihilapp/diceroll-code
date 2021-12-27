@@ -6,77 +6,83 @@ import Heading2 from '@/components/Contents/Heading2';
 import { useSiteMeta } from '@/hooks';
 
 const IndexPage = () => {
-  const style = css`
-    & > p {
-      text-indent: 15px;
-      font-weight: 500;
-      color: #333333;
-      line-height: 1.8;
-      letter-spacing: -1px;
-      text-align: justify;
-      transition: all 0.3s;
-      margin: 40px 0;
-    }
-
-    & > ul {
-      margin: 40px 0;
-
-      &:nth-last-of-type(1) {
-        margin-bottom: 0;
-      }
-
-      & > li {
-        font-weight: 500;
-        letter-spacing: -1px;
-        color: #333333;
-        margin: 10px 0;
-        line-height: 1.8;
-        text-align: justify;
-        transition: all 0.3s;
-        padding: 10px;
-        border-radius: 10px;
-        background-color: #dddddd90;
-        border: 1px solid #88888850;
-
-        & > span {
-          background-color: #ff4242aa;
-          color: #ffffff;
-          border-radius: 5px;
-          padding: 0 5px;
-          font-weight: 900;
-          border: 2px solid #ff4242dd;
-        }
-
-        &:nth-of-type(1) {
-          margin-top: 0;
-        }
-
-        &:nth-last-of-type(1) {
-          margin-bottom: 0;
-        }
-
-        &:before {
-          content: '\\f0a9';
-          font-family: 'Font Awesome 5 Free', sans-serif;
-          font-weight: 900;
-          margin-right: 5px;
-        }
-      }
-    }
-
-    @media all and (min-width: 1024px) {
-      p, ul > li {font-size: ${sizeData[3]};}
+  const style = css({
+    '& > p': {
+      textIndent: '15px',
+      fontWeight: '500',
+      color: '#333333',
+      lineHeight: '1.8',
+      letterSpacing: '-1px',
+      textAlign: 'justify',
+      margin: '40px 0',
     },
-    @media all and (min-width: 768px) and (max-width: 1023px) {
-      p, ul > li {font-size: ${sizeData[2]};}
+
+    '& > ul': {
+      margin: '40px 0',
+
+      '&:nth-last-of-type(1)': {
+        marginBottom: '0',
+      },
+
+      '& > li': {
+        fontWeight: '500',
+        letterSpacing: '-1px',
+        color: '#333333',
+        margin: '10px 0',
+        lineHeight: '1.8',
+        textAlign: 'justify',
+        padding: '10px',
+        borderRadius: '10px',
+        backgroundColor: '#dddddd90',
+        border: '1px solid #88888850',
+
+        '& > span': {
+          backgroundColor: '#ff4242aa',
+          color: '#ffffff',
+          borderRadius: '5px',
+          padding: '0 5px',
+          fontWeight: '900',
+          border: '2px solid #ff4242dd',
+        },
+
+        '&:nth-of-type(1)': {
+          marginTop: '0',
+        },
+
+        '&:nth-last-of-type(1)': {
+          marginBottom: '0',
+        },
+
+        '&:before': {
+          content: '"\\f0a9"',
+          fontFamily: `'Font Awesome 5 Free', sans-serif`,
+          fontWeight: '900',
+          marginRight: '5px',
+        },
+      },
     },
-    @media all and (min-width: 480px) and (max-width: 767px) {
-      p, ul > li {font-size: ${sizeData[2]};}
+
+    '@media all and (min-width: 1024px)': {
+      'p, ul > li': {
+        fontSize: `${sizeData[3]}`,
+      },
     },
-    @media all and (max-width: 479px) {
-      p, ul > li {font-size: ${sizeData[1]};}
+    '@media all and (min-width: 768px) and (max-width: 1023px)': {
+      'p, ul > li': {
+        fontSize: `${sizeData[3]}`,
+      },
     },
-  `;
+    '@media all and (min-width: 480px) and (max-width: 767px)': {
+      'p, ul > li': {
+        fontSize: `${sizeData[2]}`,
+      },
+    },
+    '@media all and (max-width: 479px)': {
+      'p, ul > li': {
+        fontSize: `${sizeData[2]}`,
+      },
+    },
+  });
 
   const meta = useSiteMeta({
     title: '홈',

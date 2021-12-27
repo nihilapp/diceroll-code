@@ -27,6 +27,7 @@ const DiceItem = ({ roll, color, }: Props) => {
     padding: '5px 10px',
     lineHeight: '1',
     borderRadius: '5px',
+    letterSpacing: '-1px',
 
     '@media all and (min-width: 1024px)': {
       fontSize: `${sizeData[3]}`,

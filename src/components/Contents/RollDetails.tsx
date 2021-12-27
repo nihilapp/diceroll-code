@@ -34,6 +34,7 @@ const RollDetails = ({
       fontWeight: '900',
       color: '#333333',
       marginBottom: '20px',
+      letterSpacing: '-1px',
 
       '& > span': {
         color: '#ffffff',
@@ -53,6 +54,7 @@ const RollDetails = ({
       alignItems: 'center',
       justifyContent: 'flex-start',
       lineHeight: '1',
+      letterSpacing: '-1px',
 
       '& > svg': {
         marginRight: '5px',

@@ -12,6 +12,7 @@ const Heading2 = ({ children, }: IHaveChildren) => {
     padding: '10px 20px',
     marginBottom: '40px',
     fontWeight: '900',
+    letterSpacing: '-1px',
 
     '@media all and (min-width: 1024px)': {
       fontSize: `${sizeData[5]}`,
