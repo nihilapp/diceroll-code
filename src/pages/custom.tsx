@@ -1,8 +1,8 @@
 import React from 'react';
 import AppLayout from '@/layouts/AppLayout';
-import TopDiceInput from '@/components/TopDiceInput';
-import DiceResult from '@/components/Contents/DiceResult';
 import { useSiteMeta } from '@/hooks';
+import { TopDiceInput } from '@/components';
+import { DiceResult } from '@/components/Contents';
 
 const CustomPage = () => {
   const meta = useSiteMeta({

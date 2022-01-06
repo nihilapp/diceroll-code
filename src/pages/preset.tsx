@@ -1,8 +1,8 @@
 import React from 'react';
 import AppLayout from '@/layouts/AppLayout';
-import TopDicePreset from '@/components/TopDicePreset';
-import DiceResult from '@/components/Contents/DiceResult';
 import { useSiteMeta } from '@/hooks';
+import { TopDicePreset } from '@/components';
+import { DiceResult } from '@/components/Contents';
 
 const PresetPage = () => {
   const meta = useSiteMeta({

@@ -1,20 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 import { AppProps } from 'next/app';
 import { store } from '@/store';
 import { siteData } from '@/data';
 
 const App = ({ Component, pageProps, }: AppProps) => {
-  const router = useRouter();
-
-  const pageName = {
-    '/': '홈',
-    '/preset': '주사위 프리셋',
-    '/custom': '커스텀 주사위',
-  };
-
   return (
     <>
       <Provider store={store}>

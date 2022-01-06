@@ -1,7 +1,6 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
-import DiceItem from '@/components/Contents/DiceItem';
-import DiceDetails from '@/components/Contents/DiceDetails';
+import { DiceDetails, DiceItem } from '@/components/Contents';
 
 let roll: number;
 let color: string;

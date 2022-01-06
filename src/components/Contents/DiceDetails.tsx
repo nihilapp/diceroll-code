@@ -9,84 +9,76 @@ interface Props {
   total: number;
 }
 
-const DiceDetails = ({ dice, diceItemBox, total, }: Props) => {
-  const style = css({
-    margin: '4px 0',
-    padding: '5px',
-    borderRadius: '5px',
-    backgroundColor: '#ffffff',
-    border: '2px solid #33333350',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+export const DiceDetails = ({ dice, diceItemBox, total, }: Props) => {
+  const DiceDetailsStyle = css`
+    margin: 4px 0;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 2px solid #33333350;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 
-    '&:nth-of-type(1)': {
-      marginTop: '0',
-    },
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
 
-    '&:nth-last-of-type(1)': {
-      marginBottom: '0',
-    },
+    &:nth-last-of-type(1) {
+      margin-bottom: 0;
+    }
 
-    '& > .dice-label': {
-      padding: '5px 10px',
-      backgroundColor: '#555555',
-      color: '#ffffff',
-      borderRadius: '5px 0 0 5px',
-      fontWeight: '900',
-      display: 'inline-flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      lineHeight: '1',
-      marginTop: '2px',
-      marginBottom: '2px',
-      letterSpacing: '-1px',
+    & > .dice-label,
+    & > .dice-total{
+      padding: 5px 10px;
+      color: #ffffff;
+      font-weight: 900;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      letter-spacing: -1px;
 
-      '& > svg': {
-        marginRight: '5px',
-      },
-    },
+      & > svg {
+        margin-right: 5px;
+      }
+    }
 
-    '& > .dice-total': {
-      padding: '5px 10px',
-      marginRight: '5px',
-      backgroundColor: '#333333',
-      color: '#ffffff',
-      borderRadius: '0 5px 5px 0',
-      fontWeight: '900',
-      display: 'inline-flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      lineHeight: '1',
-      marginTop: '2px',
-      marginBottom: '2px',
-      letterSpacing: '-1px',
+    & > .dice-label {
+      border-radius: 5px 0 0 5px;
+      background-color: #555555;
+    }
 
-      '& > svg': {
-        marginRight: '5px',
-      },
-    },
-  }, {
-    '@media all and (min-width: 1024px)': {
-      fontSize: `${sizeData[3]}`,
-    },
-    '@media all and (min-width: 768px) and (max-width: 1023px)': {
-      fontSize: `${sizeData[3]}`,
-    },
-    '@media all and (min-width: 480px) and (max-width: 767px)': {
-      fontSize: `${sizeData[2]}`,
-    },
-    '@media all and (max-width: 479px)': {
-      fontSize: `${sizeData[2]}`,
-    },
-  });
+    & > .dice-total {
+      border-radius: 0 5px 5px 0;
+      margin-right: 5px;
+      background-color: #333333;
+    }
+
+    @media all and (min-width: 1024px) {
+      font-size: ${sizeData[3]};
+    }
+
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      font-size: ${sizeData[3]};
+    }
+
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      font-size: ${sizeData[2]};
+    }
+
+    @media all and (max-width: 479px) {
+      font-size: ${sizeData[2]};
+    }
+  `;
 
   return (
     <>
-      <p className='box-item' css={style}>
+      <p className='box-item' css={DiceDetailsStyle}>
         <span className='dice-label'><FaDiceD20 />{dice}</span>
         <span className='dice-total'><FaArrowCircleRight />{total}</span>
         {diceItemBox}
@@ -94,5 +86,3 @@ const DiceDetails = ({ dice, diceItemBox, total, }: Props) => {
     </>
   );
 };
-
-export default DiceDetails;

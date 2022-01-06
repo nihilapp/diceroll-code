@@ -6,9 +6,9 @@ import { LinkBlock } from './LinkBlock';
 import { pathData } from '@/data/path.data';
 
 export const NavBlock = React.memo(() => {
-  const NavBlockStyle = css({
-    marginTop: '26px',
-  });
+  const NavBlockStyle = css`
+    margin-top: 26px;
+  `;
 
   return (
     <>

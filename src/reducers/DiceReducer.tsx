@@ -3,8 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 import { IState } from '@/types';
 import getRollDice from '@/utils/getRollDice';
-import RollDetails from '@/components/Contents/RollDetails';
-import ModItem from '@/components/Contents/ModItem';
+import { ModItem, RollDetails } from '@/components/Contents';
 
 const initialState: IState[] = [ {
   ErrorMessage: (<>다이스를 굴리세요.</>),

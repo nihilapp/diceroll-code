@@ -7,47 +7,48 @@ interface Props {
   color: string;
 }
 
-const DiceItem = ({ roll, color, }: Props) => {
+export const DiceItem = ({ roll, color, }: Props) => {
   const colorType = {
     critical: '#1e8609',
     fumble: '#a80000',
     normal: '#333333',
   };
 
-  const style = css({
-    marginRight: '5px',
-    backgroundColor: colorType[color],
-    color: '#ffffff',
-    display: 'inline-flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: '2px',
-    marginBottom: '2px',
-    padding: '5px 10px',
-    lineHeight: '1',
-    borderRadius: '5px',
-    letterSpacing: '-1px',
+  const DiceItemStyle = css`
+    margin-right: 5px;
+    background-color: ${colorType[color]};
+    color: #ffffff;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 5px 10px;
+    line-height: 1;
+    border-radius: 5px;
+    letter-spacing: -1px;
 
-    '@media all and (min-width: 1024px)': {
-      fontSize: `${sizeData[3]}`,
-    },
-    '@media all and (min-width: 768px) and (max-width: 1023px)': {
-      fontSize: `${sizeData[3]}`,
-    },
-    '@media all and (min-width: 480px) and (max-width: 767px)': {
-      fontSize: `${sizeData[2]}`,
-    },
-    '@media all and (max-width: 479px)': {
-      fontSize: `${sizeData[2]}`,
-    },
-  });
+    @media all and (min-width: 1024px) {
+      font-size: ${sizeData[3]};
+    }
+
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      font-size: ${sizeData[3]};
+    }
+
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      font-size: ${sizeData[2]};
+    }
+
+    @media all and (max-width: 479px) {
+      font-size: ${sizeData[3]};
+    }
+  `;
 
   return (
     <>
-      <span css={style} className='dice-item'>{roll}</span>
+      <span css={DiceItemStyle} className='dice-item'>{roll}</span>
     </>
   );
 };
-
-export default DiceItem;

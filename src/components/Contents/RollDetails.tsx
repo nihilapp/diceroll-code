@@ -10,92 +10,99 @@ interface Props {
   modSpanArray: React.ReactElement[];
 }
 
-const RollDetails = ({
+export const RollDetails = ({
   total, value, detailItemArray, modSpanArray,
 }: Props) => {
-  const style = css({
-    margin: '20px 0',
-    backgroundColor: '#eeeeee',
-    padding: '10px',
-    border: '2px solid #33333330',
-    borderRadius: '10px',
-    width: '100%',
-    boxSizing: 'border-box',
+  const RollDetailsStyle = css`
+    margin: 20px 0;
+    background-color: #eeeeee;
+    padding: 10px;
+    border: 2px solid #33333330;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
 
-    '&:nth-of-type(1)': {
-      marginTop: '0',
-    },
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
 
-    '&:nth-last-of-type(1)': {
-      marginBottom: '0',
-    },
+    &:nth-last-of-type(1) {
+      margin-bottom: 0;
+    }
 
-    '& > .roll-total': {
-      fontWeight: '900',
-      color: '#333333',
-      marginBottom: '20px',
-      letterSpacing: '-1px',
+    & > .roll-total {
+      font-weight: 900;
+      color: #333333;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
 
-      '& > span': {
-        color: '#ffffff',
-        borderRadius: '10px',
-        padding: '0 10px',
-        backgroundColor: '#333333',
-        display: 'inline-block',
-      },
-    },
+      & > span {
+        color: #ffffff;
+        border-radius: 10px;
+        padding: 0 10px;
+        background-color: #333333;
+        display: inline-block;
+      }
+    }
 
-    '& > .dice-label': {
-      fontWeight: '900',
-      color: '#333333',
-      marginBottom: '20px',
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      lineHeight: '1',
-      letterSpacing: '-1px',
+    & > .dice-label {
+      font-weight: 900;
+      color: #333333;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      line-height: 1;
+      letter-spacing: -1px;
 
-      '& > svg': {
-        marginRight: '5px',
-      },
-    },
+      & > svg {
+        margin-right: 5px;
+      }
+    }
 
-    '& > .detail-box': {
-      '& > .mod-details-box': {
-        padding: '5px',
-        borderRadius: '5px',
-        backgroundColor: '#ffffff',
-        border: '2px solid #33333350',
-        marginTop: '10px',
-      },
-    },
+    & > .detail-box {
+      & > .mod-details-box {
+        padding: 5px;
+        border-radius: 5px;
+        background-color: #ffffff;
+        border: 2px solid #33333350;
+        margin-top: 10px;
+      }
+    }
 
-    '@media all and (min-width: 1024px)': {
-      '& > .roll-total, & > .dice-label': {
-        fontSize: `${sizeData[6]}`,
-      },
-    },
-    '@media all and (min-width: 768px) and (max-width: 1023px)': {
-      '& > .roll-total, & > .dice-label': {
-        fontSize: `${sizeData[6]}`,
-      },
-    },
-    '@media all and (min-width: 480px) and (max-width: 767px)': {
-      '& > .roll-total, & > .dice-label': {
-        fontSize: `${sizeData[5]}`,
-      },
-    },
-    '@media all and (max-width: 479px)': {
-      '& > .roll-total, & > .dice-label': {
-        fontSize: `${sizeData[5]}`,
-      },
-    },
-  });
+    @media all and (min-width: 1024px) {
+      & > .roll-total,
+      & > .dice-label {
+        font-size: ${sizeData[6]};
+      }
+    }
+
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      & > .roll-total,
+      & > .dice-label {
+        font-size: ${sizeData[6]};
+      }
+    }
+
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      & > .roll-total,
+      & > .dice-label {
+        font-size: ${sizeData[5]};
+      }
+    }
+
+    @media all and (max-width: 479px) {
+      & > .roll-total,
+      & > .dice-label {
+        font-size: ${sizeData[5]};
+      }
+    }
+  `;
 
   return (
     <>
-      <div className='roll-detail' css={style}>
+      <div className='roll-detail' css={RollDetailsStyle}>
         <p className='dice-label'><FaDiceD20 />{value}</p>
         <h3 className='roll-total'>총합: <span>{total}</span></h3>
         <div className='detail-box'>
@@ -114,5 +121,3 @@ const RollDetails = ({
     </>
   );
 };
-
-export default RollDetails;
