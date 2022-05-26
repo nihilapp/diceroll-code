@@ -195,8 +195,8 @@ export const DiceReducer = createSlice({
             mod = Number(newValues[xx]);
             const modValue = newValues[xx];
 
-            const numberIgnoreSearch = /[^0-9]/g;
-            const numberSearch = /[0-9]/g;
+            const numberIgnoreSearch = /\D/g;
+            const numberSearch = /\d/g;
             const matchNoNumberArray = modValue.match(numberIgnoreSearch);
             const matchNumberArray = modValue.match(numberSearch);
 
@@ -235,7 +235,7 @@ export const DiceReducer = createSlice({
           <RollDetails
             key={uuid()}
             total={dicestotal}
-            value={newValue}
+            value={newValue.replace(/(\+-)/g, '-')}
             detailItemArray={detailItemArray}
             modSpanArray={modSpanArray}
           />
